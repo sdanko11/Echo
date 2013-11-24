@@ -33,12 +33,13 @@ def has_a_speech
     puts "Ok where can I find what you want to say?"
     file_name = gets.chomp
     puts "Loading #{file_name}..."
-    if file_name == 'speech.txt'
-      File.open("#{file_name}", "r").each_line do |line|
+    # if file_name == 'speech.txt'
+    begin
+    File.open("#{file_name}", "r").each_line do |line|
       @multiple_responses << line
-      end
-    else file_name != 'speech.txt'
-    puts "I could not find the file #{file_name}"
+    end
+    rescue 
+      puts "I could not find the file #{file_name}"
 end
   if @multiple_responses.count > 0
     how_many_responsses = @multiple_responses.count
@@ -67,9 +68,3 @@ else
   repeat_the_statement(answer)
 end
   
-
-
-
-
-
-
